@@ -86,7 +86,7 @@
     </style>
 </head>
 <body class="min-h-screen">
-    <!-- Hero Section -->
+    <!-- Hero sec -->
     <header class="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div class="brutal-decoration w-64 h-64 -top-32 -left-32 rotate-45"></div>
         <div class="brutal-decoration w-32 h-32 -bottom-16 -right-16 rotate-12"></div>
@@ -112,7 +112,7 @@
         </div>
     </header>
 
-    <!-- About Section -->
+    <!-- About Sec -->
     <section class="py-16 px-4 sm:px-6 lg:px-8 bg-black text-white">
         <div class="max-w-7xl mx-auto">
             <h2 class="section-title text-3xl font-bold mb-8 text-white">ABOUT RESUME CRAFT</h2>
@@ -137,13 +137,13 @@
         </div>
     </section>
 
-    <!-- Resume Form Section -->
+    <!-- Resume Form Sec -->
      <form action="/resume" method="post">
     <section class="py-16 px-4 sm:px-6 lg:px-8" id="resumeForm">
         <div class="max-w-4xl mx-auto">
             <h2 class="section-title text-3xl font-bold mb-12">BUILD YOUR RESUME</h2>
             
-            <!-- Personal Information -->
+            <!-- Personal Infor -->
             <div class="mb-12 brutal-border bg-white p-6">
                 <h3 class="text-2xl font-bold mb-6">PERSONAL INFORMATION</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -201,7 +201,7 @@
                 </div>
             </div>
             
-            <!-- Summary Section -->
+            <!-- Summary Sec -->
             <div class="mb-12 brutal-border bg-white p-6">
                 <h3 class="text-2xl font-bold mb-6">PROFESSIONAL SUMMARY</h3>
                 <label for="summary" class="block mb-2 font-bold">Tell us about yourself</label>
@@ -220,7 +220,7 @@
                 <!-- <div id="skillsList" class="flex flex-wrap gap-2 mt-4"></div> -->
             </div>
             
-            <!-- Projects Section -->
+            <!-- Projects Sec -->
             <div class="mb-12 brutal-border bg-white p-6">
                 <h3 class="text-2xl font-bold mb-6">PROJECTS</h3>
                 <div id="projectsContainer">
@@ -311,7 +311,7 @@
                 <!-- <button type="button" class="brutal-btn mt-4" onclick="addProject()">+ ADD ANOTHER PROJECT</button> -->
             </div>
             
-            <!-- Education Section -->
+            <!-- Education Sec -->
             <div class="mb-12 brutal-border bg-white p-6">
                 <h3 class="text-2xl font-bold mb-6">EDUCATION</h3>
                 <div id="educationContainer">
@@ -391,17 +391,9 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <h3 class="text-xl font-bold mb-4">ResumeCraft</h3>
-                    <!-- <p>The brutalist resume builder that gets you hired.</p> -->
+          
                 </div>
-                <!-- <div>
-                    <h3 class="text-xl font-bold mb-4">LINKS</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-red-400">Home</a></li>
-                        <li><a href="#" class="hover:text-red-400">About</a></li>
-                        <li><a href="#" class="hover:text-red-400">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-red-400">Terms of Service</a></li>
-                    </ul>
-                </div> -->
+            
                 <div>
                     <h3 class="text-xl font-bold mb-4">CONNECT</h3>
                     <div class="flex space-x-4">
@@ -442,129 +434,7 @@ requestAnimationFrame(raf);
             document.getElementById('resumeForm').scrollIntoView({ behavior: 'smooth' });
         });
 
-        // Skills functionality
-        // function addSkill() {
-        //     const skillInput = document.querySelector('.skill-input');
-        //     const skill = skillInput.value.trim();
-            
-        //     if (skill) {
-        //         const skillsList = document.getElementById('skillsList');
-        //         const skillElement = document.createElement('div');
-        //         skillElement.className = 'bg-black text-white px-3 py-1 flex items-center';
-        //         skillElement.innerHTML = `
-        //             ${skill}
-        //             <button type="button" class="ml-2 text-red-400" onclick="this.parentElement.remove()">
-        //                 <i class="fas fa-times"></i>
-        //             </button>
-        //         `;
-        //         skillsList.appendChild(skillElement);
-        //         skillInput.value = '';
-        //     }
-        // }
-
-        // Add project functionality
-        // let projectCount = 3;
-        // function addProject() {
-        //     projectCount++;
-        //     const projectsContainer = document.getElementById('projectsContainer');
-        //     const newProject = document.createElement('div');
-        //     newProject.className = 'project-item mb-6 pb-6 brutal-border-thin';
-        //     newProject.innerHTML = `
-        //         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        //             <div>
-        //                 <label for="project${projectCount}Name" class="block mb-2 font-bold">Project Name</label>
-        //                 <input type="text" id="project${projectCount}Name" class="brutal-input w-full" placeholder="Project Name">
-        //             </div>
-        //             <div class="grid grid-cols-2 gap-4">
-        //                 <div>
-        //                     <label for="project${projectCount}Start" class="block mb-2 font-bold">Start Date</label>
-        //                     <input type="month" id="project${projectCount}Start" class="brutal-input w-full">
-        //                 </div>
-        //                 <div>
-        //                     <label for="project${projectCount}End" class="block mb-2 font-bold">End Date</label>
-        //                     <input type="month" id="project${projectCount}End" class="brutal-input w-full">
-        //                 </div>
-        //             </div>
-        //         </div>
-        //         <div class="mb-4">
-        //             <label for="project${projectCount}Description" class="block mb-2 font-bold">Description</label>
-        //             <textarea id="project${projectCount}Description" class="brutal-input w-full h-24" placeholder="Project description..."></textarea>
-        //         </div>
-        //         <div>
-        //             <label for="project${projectCount}Link" class="block mb-2 font-bold">Project Link (optional)</label>
-        //             <input type="url" id="project${projectCount}Link" class="brutal-input w-full" placeholder="https://github.com/username/project">
-        //         </div>
-        //         <button type="button" class="mt-2 text-red-600 font-bold" onclick="this.parentElement.remove()">
-        //             REMOVE PROJECT
-        //         </button>
-        //     `;
-        //     projectsContainer.appendChild(newProject);
-        // }
-
-        // Add education functionality
-        // let educationCount = 2;
-        // function addEducation() {
-        //     educationCount++;
-        //     const educationContainer = document.getElementById('educationContainer');
-        //     const newEducation = document.createElement('div');
-        //     newEducation.className = 'education-item mb-6 pb-6 brutal-border-thin';
-        //     newEducation.innerHTML = `     
-        //         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        //             <div>
-        //                 <label for="edu${educationCount}Degree" class="block mb-2 font-bold">Degree/Course</label>
-        //                 <input type="text" id="edu${educationCount}Degree" class="brutal-input w-full" placeholder="Degree/Course">
-        //             </div>
-        //             <div>
-        //                 <label for="edu${educationCount}Institution" class="block mb-2 font-bold">Institution</label>
-        //                 <input type="text" id="edu${educationCount}Institution" class="brutal-input w-full" placeholder="Institution Name">
-        //             </div>
-        //         </div>== 
-        //         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        //             <div>
-        //                 <label for="edu${educationCount}Start" class="block mb-2 font-bold">Start Year</label>
-        //                 <input type="number" id="edu${educationCount}Start" class="brutal-input w-full" placeholder="Start Year" min="1900" max="2099">
-        //             </div>
-        //             <div>
-        //                 <label for="edu${educationCount}End" class="block mb-2 font-bold">End Year</label>
-        //                 <input type="number" id="edu${educationCount}End" class="brutal-input w-full" placeholder="End Year" min="1900" max="2099">
-        //             </div>
-        //             <div>
-        //                 <label for="edu${educationCount}Grade" class="block mb-2 font-bold">Grade/Percentage</label>
-        //                 <input type="text" id="edu${educationCount}Grade" class="brutal-input w-full" placeholder="Grade/Percentage">
-        //             </div>
-        //         </div>
-        //         <button type="button" class="mt-2 text-red-600 font-bold" onclick="this.parentElement.remove()">
-        //             REMOVE EDUCATION
-        //         </button>
-        //     `;
-        //     educationContainer.appendChild(newEducation);
-        // }
-
-        // Generate Resume functionality
-        // function generateResume() {
-        //     // In a real implementation, this would collect all form data
-        //     // and generate a PDF or HTML resume for download
-        //     alert('Resume generation functionality would be implemented here! This would collect all form data and generate a PDF or HTML resume for download.');
-            
-        //     // For demo purposes, we'll just show a success message
-        //     const button = document.querySelector('.brutal-btn.bg-red-600');
-        //     button.textContent = 'RESUME GENERATED!';
-        //     button.classList.remove('bg-red-600');
-        //     button.classList.add('bg-green-600');
-            
-        //     setTimeout(() => {
-        //         button.textContent = 'GENERATE & DOWNLOAD RESUME';
-        //         button.classList.remove('bg-green-600');
-        //         button.classList.add('bg-red-600');
-        //     }, 3000);
-        // }
-
-        // // Allow pressing Enter in skill input to add skill
-        // document.querySelector('.skill-input').addEventListener('keypress', function(e) {
-        //     if (e.key === 'Enter') {
-        //         addSkill();
-        //     }
-        // });
+       
     </script>
 </body>
 </html>
