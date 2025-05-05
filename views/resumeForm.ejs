@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ResumeCraft | Free ATS-Friendly Resume Builder</title>
+    <meta name="description" content="Create professional, ATS-optimized resumes for free with ResumeCraft. Build your perfect resume in minutes and download as PDF. No signup required.">
+    <meta name="keywords" content="free resume builder, ATS resume, professional resume maker, job application resume, resume PDF download">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Resume Builder Online | ATS-Friendly Templates | ResumeCraft</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Brutalist UI touches */
+        :root {
+            --brutal-red: #ff2e2e;
+            --brutal-blue: #2e2eff;
+            --brutal-yellow: #ffcc00;
+            --brutal-bg: #f5f5f5;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: var(--brutal-bg);
+            line-height: 1.6;
+        }
+        
+        .brutal-border {
+            border: 3px solid #000;
+            box-shadow: 8px 8px 0 #000;
+        }
+        
+        .brutal-border-thin {
+            border: 2px solid #000;
+        }
+        
+        .brutal-btn {
+            background: #000;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .brutal-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0 var(--brutal-red);
+        }
+        
+        .brutal-input {
+            background: white;
+            border: 2px solid #000;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .brutal-input:focus {
+            outline: none;
+            border-color: var(--brutal-blue);
+            box-shadow: 0 0 0 2px var(--brutal-blue);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--brutal-red);
+        }
+        
+        /* Adding some brutalist decorative elements */
+        .brutal-decoration {
+            position: absolute;
+            background-color: var(--brutal-yellow);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Hero Section -->
+    <header class="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div class="brutal-decoration w-64 h-64 -top-32 -left-32 rotate-45"></div>
+        <div class="brutal-decoration w-32 h-32 -bottom-16 -right-16 rotate-12"></div>
+        
+        <div class="max-w-7xl mx-auto relative">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                        BUILD YOUR <span class="text-red-600">RESUME</span> 100% FREE
+                    </h1>
+                    <p class="text-xl mb-8">
+                        ResumeCraft helps you build an ATS-friendly, professional resume that gets you interviews                    </p>
+                    <button class="brutal-btn" id="startBuildingBtn">
+                        Start Building Your Resume →
+                    </button>
+                </div>
+                <div class="brutal-border bg-white p-2">
+                    <img src="/img/papu badatya resume for front end developer (1).png" 
+                         alt="Brutalist resume example" 
+                         class="w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-black text-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="section-title text-3xl font-bold mb-8 text-white">ABOUT RESUME CRAFT</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <p class="mb-4">
+                        ResumeCraft is a completely free online resume builder designed to help job seekers create professional, recruiter-approved resumes in minutes. Our platform eliminates the frustration of resume formatting while ensuring your qualifications shine through. Unlike complex design tools, we focus on what really matters - presenting your skills and experience in the most effective way for both human recruiters and applicant tracking systems (ATS).                    <!-- <p class="mb-4">
+                        Inspired by brutalist web design, we believe that content should be king, and your resume should reflect the raw power of your professional journey.
+                    </p> -->
+                </div>
+                <div class="brutal-border bg-white text-black p-6">
+                    <h3 class="font-bold text-xl mb-4">Why Choose ResumeCraft?</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="mb-2">No distracting templates</li>
+                        <li class="mb-2">Focus on content over design</li>
+                        <li class="mb-2">ATS-friendly by default</li>
+                        <li class="mb-2">Mobile-first approach</li>
+                        <li>100% free forever</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Form Section -->
+     <form action="/resume" method="post">
+    <section class="py-16 px-4 sm:px-6 lg:px-8" id="resumeForm">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title text-3xl font-bold mb-12">BUILD YOUR RESUME</h2>
+            
+            <!-- Personal Information -->
+            <div class="mb-12 brutal-border bg-white p-6">
+                <h3 class="text-2xl font-bold mb-6">PERSONAL INFORMATION</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="fullName" class="block mb-2 font-bold">Full Name</label>
+                        <input type="text" id="fullName" class="brutal-input w-full" placeholder="John Doe"  name="resume[name]">
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2 font-bold">Email</label>
+                        <input type="email" id="email" class="brutal-input w-full" placeholder="john@example.com"  name="resume[email]">
+                    </div>
+                    <div>
+                        <label for="phone" class="block mb-2 font-bold">Phone</label>
+                        <input type="tel" id="phone" class="brutal-input w-full" placeholder="+1 (555) 123-4567"  name="resume[phone]">
+                    </div>
+                    <div>
+                        <label for="address" class="block mb-2 font-bold">Address</label>
+                        <input type="text" id="address" class="brutal-input w-full" placeholder="123 Main St, City, Country"  name="resume[address]">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="mb-12 brutal-border bg-white p-6">
+                <h3 class="text-2xl font-bold mb-6">SOCIAL LINKS</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="github" class="block mb-2 font-bold">GitHub</label>
+                        <div class="flex items-center">
+                            <span class="bg-black text-white p-2"><i class="fab fa-github"></i></span>
+                            <input type="url" id="github" class="brutal-input w-full" placeholder="https://github.com/username"  name="resume[github]">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="linkedin" class="block mb-2 font-bold">LinkedIn</label>
+                        <div class="flex items-center">
+                            <span class="bg-blue-600 text-white p-2"><i class="fab fa-linkedin-in"></i></span>
+                            <input type="url" id="linkedin" class="brutal-input w-full" placeholder="https://linkedin.com/in/username"  name="resume[linkedin]">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="portfolio" class="block mb-2 font-bold">Portfolio</label>
+                        <div class="flex items-center">
+                            <span class="bg-gray-800 text-white p-2"><i class="fas fa-globe"></i></span>
+                            <input type="url" id="portfolio" class="brutal-input w-full" placeholder="https://yourportfolio.com"  name="resume[portfolio]">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="twitter" class="block mb-2 font-bold">Twitter/X</label>
+                        <div class="flex items-center">
+                            <span class="bg-black text-white p-2"><i class="fab fa-twitter"></i></span>
+                            <input type="url" id="twitter" class="brutal-input w-full" placeholder="https://twitter.com/username" name="resume[twitter]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Summary Section -->
+            <div class="mb-12 brutal-border bg-white p-6">
+                <h3 class="text-2xl font-bold mb-6">PROFESSIONAL SUMMARY</h3>
+                <label for="summary" class="block mb-2 font-bold">Tell us about yourself</label>
+                <textarea id="summary" class="brutal-input w-full h-32" placeholder="Experienced software developer with 5+ years in web development..." name="resume[summary]"></textarea>
+            </div>
+            
+            <!-- Skills Section -->
+            <div class="mb-12 brutal-border bg-white p-6">
+                <h3 class="text-2xl font-bold mb-6">SKILLS</h3>
+                <div id="skillsContainer">
+                    <div class="flex items-center mb-3">
+                        <input type="text" class="brutal-input flex-grow mr-2 skill-input" placeholder="JavaScript, React, Node.js..." name="resume[skill]">
+                        <!-- <button type="button" class="bg-black text-white px-3 py-2" onclick="addSkill()">+</button> -->
+                    </div>
+                </div>
+                <!-- <div id="skillsList" class="flex flex-wrap gap-2 mt-4"></div> -->
+            </div>
+            
+            <!-- Projects Section -->
+            <div class="mb-12 brutal-border bg-white p-6">
+                <h3 class="text-2xl font-bold mb-6">PROJECTS</h3>
+                <div id="projectsContainer">
+                    <!-- Project 1 -->
+                    <div class="project-item mb-6 pb-6 brutal-border-thin">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label for="project1Name" class="block mb-2 font-bold">Project Name</label>
+                                <input type="text" id="project1Name" class="brutal-input w-full" placeholder="E-commerce Platform" name="resume[project1Name]">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="project1Start" class="block mb-2 font-bold">Start Date</label>
+                                    <input type="month" id="project1Start" class="brutal-input w-full" name="resume[project1StartDate]">
+                                </div>
+                                <div>
+                                    <label for="project1End" class="block mb-2 font-bold">End Date</label>
+                                    <input type="month" id="project1End" class="brutal-input w-full" name="resume[project1EndDate]">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="project1Description" class="block mb-2 font-bold">Description</label>
+                            <textarea id="project1Description" class="brutal-input w-full h-24" placeholder="Built a full-stack e-commerce platform with React and Node.js..." name="resume[project1Aboute]"></textarea>
+                        </div>
+                        <div>
+                            <label for="project1Link" class="block mb-2 font-bold">Project Link (optional)</label>
+                            <input type="url" id="project1Link" class="brutal-input w-full" placeholder="https://github.com/username/project" name="resume[project1link]">
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="project-item mb-6 pb-6 brutal-border-thin">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label for="project2Name" class="block mb-2 font-bold">Project Name</label>
+                                <input type="text" id="project2Name" class="brutal-input w-full" placeholder="Task Management App" name="resume[project2Name]">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="project2Start" class="block mb-2 font-bold">Start Date</label>
+                                    <input type="month" id="project2Start" class="brutal-input w-full" name="resume[project2StartDate]">
+                                </div>
+                                <div>
+                                    <label for="project2End" class="block mb-2 font-bold">End Date</label>
+                                    <input type="month" id="project2End" class="brutal-input w-full" name="resume[project2EndDate]">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="project2Description" class="block mb-2 font-bold">Description</label>
+                            <textarea id="project2Description" class="brutal-input w-full h-24" placeholder="Developed a task management application with real-time updates..." name="resume[project2Aboute]"></textarea>
+                        </div>
+                        <div>
+                            <label for="project2Link" class="block mb-2 font-bold">Project Link (optional)</label>
+                            <input type="url" id="project2Link" class="brutal-input w-full" placeholder="https://github.com/username/project" name="resume[project2Link]">
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="project-item pb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label for="project3Name" class="block mb-2 font-bold">Project Name</label>
+                                <input type="text" id="project3Name" class="brutal-input w-full" placeholder="Portfolio Website" name="resume[project3Name]">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="project3Start" class="block mb-2 font-bold">Start Date</label>
+                                    <input type="month" id="project3Start" class="brutal-input w-full" name="resume[project3StartDate]">
+                                </div>
+                                <div>
+                                    <label for="project3End" class="block mb-2 font-bold">End Date</label>
+                                    <input type="month" id="project3End" class="brutal-input w-full" name="resume[project3EndDate]">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="project3Description" class="block mb-2 font-bold">Description</label>
+                            <textarea id="project3Description" class="brutal-input w-full h-24" placeholder="Designed and developed a personal portfolio website..." name="resume[project3Aboute]"></textarea>
+                        </div>
+                        <div>
+                            <label for="project3Link" class="block mb-2 font-bold">Project Link (optional)</label>
+                            <input type="url" id="project3Link" class="brutal-input w-full" placeholder="https://github.com/username/project" name="resume[project3Link]">
+                        </div>
+                    </div>
+                </div>
+                <!-- <button type="button" class="brutal-btn mt-4" onclick="addProject()">+ ADD ANOTHER PROJECT</button> -->
+            </div>
+            
+            <!-- Education Section -->
+            <div class="mb-12 brutal-border bg-white p-6">
+                <h3 class="text-2xl font-bold mb-6">EDUCATION</h3>
+                <div id="educationContainer">
+                    <!-- Education 1 -->
+                    <div class="education-item mb-6 pb-6 brutal-border-thin">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label for="edu1Degree" class="block mb-2 font-bold">Degree/Course</label>
+                                <input type="text" id="edu1Degree" class="brutal-input w-full" placeholder="Bachelor of Science in Computer Science" name="resume[education1]">
+                            </div>
+                            <div>
+                                <label for="edu1Institution" class="block mb-2 font-bold">Institution</label>
+                                <input type="text" id="edu1Institution" class="brutal-input w-full" placeholder="University of Technology" name="resume[collage1]">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label for="edu1Start" class="block mb-2 font-bold">Start Year</label>
+                                <input type="number" id="edu1Start" class="brutal-input w-full" placeholder="2018" min="1900" max="2099" name="resume[educationStart1]">
+                            </div>
+                            <div>
+                                <label for="edu1End" class="block mb-2 font-bold">End Year</label>
+                                <input type="number" id="edu1End" class="brutal-input w-full" placeholder="2022" min="1900" max="2099" name="resume[educationEnd1]">
+                            </div>
+                            <div>
+                                <label for="edu1Grade" class="block mb-2 font-bold">Grade/Percentage</label>
+                                <input type="text" id="edu1Grade" class="brutal-input w-full" placeholder="3.8 GPA" name="resume[cgpa1]">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Education 2 -->
+                    <div class="education-item">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label for="edu2Degree" class="block mb-2 font-bold">Degree/Course</label>
+                                <input type="text" id="edu2Degree" class="brutal-input w-full" placeholder="High School Diploma" name="resume[education2]">
+                            </div>
+                            <div>
+                                <label for="edu2Institution" class="block mb-2 font-bold">Institution</label>
+                                <input type="text" id="edu2Institution" class="brutal-input w-full" placeholder="City High School" name="resume[collage2]">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label for="edu2Start" class="block mb-2 font-bold">Start Year</label>
+                                <input type="number" id="edu2Start" class="brutal-input w-full" placeholder="2014" min="1900" max="2099" name="resume[educationStart2]" >
+                            </div>
+                            <div>
+                                <label for="edu2End" class="block mb-2 font-bold">End Year</label>
+                                <input type="number" id="edu2End" class="brutal-input w-full" placeholder="2018" min="1900" max="2099" name="resume[educationEnd2]">
+                            </div>
+                            <div>
+                                <label for="edu2Grade" class="block mb-2 font-bold">Grade/Percentage</label>
+                                <input type="text" id="edu2Grade" class="brutal-input w-full" placeholder="92%" name="resume[cgpa2]">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <button type="button" class="brutal-btn mt-4" onclick="addEducation()">+ ADD ANOTHER EDUCATION</button> -->
+            </div>
+            
+            <!-- Generate Resume Button -->
+            <div class="text-center">
+                <button class="brutal-btn bg-red-600 text-white text-xl px-12 py-4" >
+                  <!-- onclick="generateResume()" -->
+                    GENERATE RESUME
+                </button>
+            </div>
+        </div>
+    </section>
+</form>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ResumeCraft</h3>
+                    <!-- <p>The brutalist resume builder that gets you hired.</p> -->
+                </div>
+                <!-- <div>
+                    <h3 class="text-xl font-bold mb-4">LINKS</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-red-400">Home</a></li>
+                        <li><a href="#" class="hover:text-red-400">About</a></li>
+                        <li><a href="#" class="hover:text-red-400">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-red-400">Terms of Service</a></li>
+                    </ul>
+                </div> -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">CONNECT</h3>
+                    <div class="flex space-x-4">
+                        <!-- <a href="#" class="text-white hover:text-red-400"><i class="fab fa-twitter fa-lg"></i></a> -->
+                        <a href="https://github.com/pstarz7" class="text-white hover:text-red-400"><i class="fab fa-github fa-lg"></i></a>
+                        <a href="https://www.linkedin.com/in/papu-badatya-759767254/" class="text-white hover:text-red-400"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                        <a href="https://www.instagram.com/_pstarz/" class="text-white hover:text-red-400"><i class="fab fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2025 ResumeCraft. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/lenis@1.3.1/dist/lenis.min.js"></script> 
+    <script>
+
+     // Initialize Lenis
+const lenis = new Lenis({
+    duration: 5.4,
+
+}
+);
+
+// Use requestAnimationFrame to continuously update the scroll
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
+
+
+        // Scroll to form when Start Building button is clicked
+        document.getElementById('startBuildingBtn').addEventListener('click', function() {
+            document.getElementById('resumeForm').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Skills functionality
+        // function addSkill() {
+        //     const skillInput = document.querySelector('.skill-input');
+        //     const skill = skillInput.value.trim();
+            
+        //     if (skill) {
+        //         const skillsList = document.getElementById('skillsList');
+        //         const skillElement = document.createElement('div');
+        //         skillElement.className = 'bg-black text-white px-3 py-1 flex items-center';
+        //         skillElement.innerHTML = `
+        //             ${skill}
+        //             <button type="button" class="ml-2 text-red-400" onclick="this.parentElement.remove()">
+        //                 <i class="fas fa-times"></i>
+        //             </button>
+        //         `;
+        //         skillsList.appendChild(skillElement);
+        //         skillInput.value = '';
+        //     }
+        // }
+
+        // Add project functionality
+        // let projectCount = 3;
+        // function addProject() {
+        //     projectCount++;
+        //     const projectsContainer = document.getElementById('projectsContainer');
+        //     const newProject = document.createElement('div');
+        //     newProject.className = 'project-item mb-6 pb-6 brutal-border-thin';
+        //     newProject.innerHTML = `
+        //         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        //             <div>
+        //                 <label for="project${projectCount}Name" class="block mb-2 font-bold">Project Name</label>
+        //                 <input type="text" id="project${projectCount}Name" class="brutal-input w-full" placeholder="Project Name">
+        //             </div>
+        //             <div class="grid grid-cols-2 gap-4">
+        //                 <div>
+        //                     <label for="project${projectCount}Start" class="block mb-2 font-bold">Start Date</label>
+        //                     <input type="month" id="project${projectCount}Start" class="brutal-input w-full">
+        //                 </div>
+        //                 <div>
+        //                     <label for="project${projectCount}End" class="block mb-2 font-bold">End Date</label>
+        //                     <input type="month" id="project${projectCount}End" class="brutal-input w-full">
+        //                 </div>
+        //             </div>
+        //         </div>
+        //         <div class="mb-4">
+        //             <label for="project${projectCount}Description" class="block mb-2 font-bold">Description</label>
+        //             <textarea id="project${projectCount}Description" class="brutal-input w-full h-24" placeholder="Project description..."></textarea>
+        //         </div>
+        //         <div>
+        //             <label for="project${projectCount}Link" class="block mb-2 font-bold">Project Link (optional)</label>
+        //             <input type="url" id="project${projectCount}Link" class="brutal-input w-full" placeholder="https://github.com/username/project">
+        //         </div>
+        //         <button type="button" class="mt-2 text-red-600 font-bold" onclick="this.parentElement.remove()">
+        //             REMOVE PROJECT
+        //         </button>
+        //     `;
+        //     projectsContainer.appendChild(newProject);
+        // }
+
+        // Add education functionality
+        // let educationCount = 2;
+        // function addEducation() {
+        //     educationCount++;
+        //     const educationContainer = document.getElementById('educationContainer');
+        //     const newEducation = document.createElement('div');
+        //     newEducation.className = 'education-item mb-6 pb-6 brutal-border-thin';
+        //     newEducation.innerHTML = `     
+        //         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        //             <div>
+        //                 <label for="edu${educationCount}Degree" class="block mb-2 font-bold">Degree/Course</label>
+        //                 <input type="text" id="edu${educationCount}Degree" class="brutal-input w-full" placeholder="Degree/Course">
+        //             </div>
+        //             <div>
+        //                 <label for="edu${educationCount}Institution" class="block mb-2 font-bold">Institution</label>
+        //                 <input type="text" id="edu${educationCount}Institution" class="brutal-input w-full" placeholder="Institution Name">
+        //             </div>
+        //         </div>== 
+        //         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        //             <div>
+        //                 <label for="edu${educationCount}Start" class="block mb-2 font-bold">Start Year</label>
+        //                 <input type="number" id="edu${educationCount}Start" class="brutal-input w-full" placeholder="Start Year" min="1900" max="2099">
+        //             </div>
+        //             <div>
+        //                 <label for="edu${educationCount}End" class="block mb-2 font-bold">End Year</label>
+        //                 <input type="number" id="edu${educationCount}End" class="brutal-input w-full" placeholder="End Year" min="1900" max="2099">
+        //             </div>
+        //             <div>
+        //                 <label for="edu${educationCount}Grade" class="block mb-2 font-bold">Grade/Percentage</label>
+        //                 <input type="text" id="edu${educationCount}Grade" class="brutal-input w-full" placeholder="Grade/Percentage">
+        //             </div>
+        //         </div>
+        //         <button type="button" class="mt-2 text-red-600 font-bold" onclick="this.parentElement.remove()">
+        //             REMOVE EDUCATION
+        //         </button>
+        //     `;
+        //     educationContainer.appendChild(newEducation);
+        // }
+
+        // Generate Resume functionality
+        // function generateResume() {
+        //     // In a real implementation, this would collect all form data
+        //     // and generate a PDF or HTML resume for download
+        //     alert('Resume generation functionality would be implemented here! This would collect all form data and generate a PDF or HTML resume for download.');
+            
+        //     // For demo purposes, we'll just show a success message
+        //     const button = document.querySelector('.brutal-btn.bg-red-600');
+        //     button.textContent = 'RESUME GENERATED!';
+        //     button.classList.remove('bg-red-600');
+        //     button.classList.add('bg-green-600');
+            
+        //     setTimeout(() => {
+        //         button.textContent = 'GENERATE & DOWNLOAD RESUME';
+        //         button.classList.remove('bg-green-600');
+        //         button.classList.add('bg-red-600');
+        //     }, 3000);
+        // }
+
+        // // Allow pressing Enter in skill input to add skill
+        // document.querySelector('.skill-input').addEventListener('keypress', function(e) {
+        //     if (e.key === 'Enter') {
+        //         addSkill();
+        //     }
+        // });
+    </script>
+</body>
+</html>

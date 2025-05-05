@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="description" content="Professional resume of <%= name %> created with ResumeCraft. Download this ATS-optimized resume template for free.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%=name %> - Resume</title>
+  <script src="https://cdn.tailwindcss.com/3.2.7"></script>
+  <script>
+    // Disable modern color functions
+    tailwind.config = {
+      corePlugins: {
+        textOpacity: false,
+        backgroundOpacity: false,
+        borderOpacity: false,
+        divideOpacity: false,
+        placeholderOpacity: false,
+        ringOpacity: false
+      }
+    }
+  </script>
+  <!-- Add html2pdf library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    @media print {
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .download-btn {
+        display: none;
+      }
+      /* Force colors to hex format */
+      .text-purple-700 {
+        color: #6d28d9 !important;
+      }
+      .bg-purple-700 {
+        background-color: #6d28d9 !important;
+      }
+      .hover\:bg-purple-800:hover {
+        background-color: #5b21b6 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="max-w-4xl mx-auto p-5 font-sans" id="resume-content">
+    <!-- Download Button - Changed to use event listener instead of onclick -->
+    <div class="flex justify-end mb-4">
+      <button id="downloadPdfBtn" class="download-btn bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded">
+        Download as PDF
+      </button>
+    </div>
+
+    <header class="text-center mb-3">
+      <h1 class="text-3xl font-bold text-purple-700">
+        <%=name %>
+      </h1>
+      <div class="text-sm text-gray-600 mt-2">
+        <p>
+         • <%=phone%> • <%=email%> • <%=linkedin%> • <%=github%> • <%=portfolio%> • <%=address%>
+        </p>
+      
+      </div>
+    </header>
+
+    <section class="mb-3">
+      <h2 class="text-xl font-semibold text-purple-700 border-b-2 border-purple-700 pb-2 mb-4">PROFESSIONAL SUMMARY</h2>
+      <p>
+        <%=summary %>
+      </p>
+    </section>
+
+    <section class="mb-3">
+      <h2 class="text-xl font-semibold text-purple-700 border-b-2 border-purple-700 pb-2 mb-4">SKILLS
+      </h2>
+      <p><%=skill  %></p>
+    </section>
+
+    <section class="mb-3">
+      <h2 class="text-xl font-semibold text-purple-700 border-b-2 border-purple-700 pb-2 mb-4">SELECTED PROJECTS</h2>
+
+      <div class="mb-4">
+        <div class="flex justify-between">
+          <h3 class="font-bold">
+            <%=project1Name %>
+          </h3>
+          <p class="text-sm text-gray-600">
+            <%= project1StartDate %> - <%=project1EndDate%>
+          </p>
+        </div>
+        <ul class="list-disc list-inside pl-4">
+          <li>
+            <%=project1Aboute %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mb-3">
+        <div class="flex justify-between">
+          <h3 class="font-bold"> <%=project2Name  %> </h3>
+          <p class="text-sm text-gray-600"><%=project2StartDate%> - <%=project2EndDate%></p>
+        </div>
+        <ul class="list-disc list-inside pl-4">
+          <li><%=project2Aboute  %>.</li>
+        </ul>
+      </div>
+
+      <div class="mb-3">
+        <div class="flex justify-between">
+          <h3 class="font-bold"><%=project3Name  %></h3>
+          <p class="text-sm text-gray-600"><%=project3StartDate%> - <%=project3EndDate %></p>
+        </div>
+        <ul class="list-disc list-inside pl-4">
+          <li><%=project3Aboute  %></li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-purple-700 border-b-2 border-purple-700 pb-2 mb-3">EDUCATION</h2>
+
+      <div class="mb-3">
+        <div class="flex justify-between">
+          <div>
+            <h3 class="font-bold">
+              <%=education1 %>
+            </h3>
+            <p><%=collage1%></p>
+          </div>
+          <p class="text-sm text-gray-600">Cgpa - <%=cgpa1%> , <%= educationEnd1 %> - <%= educationStart1 %>
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between">
+          <div>
+            <h3 class="font-bold">
+              <%=education2%>
+            </h3>
+            <p><%=collage2%></p>
+          </div>
+          <p class="text-sm text-gray-600"> Cgpa - <%=cgpa2 %> ,<%= educationEnd2 %> - <%= educationStart2 %>
+          </p>
+        </div>
+      </div>
+    </section>
+    
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+
+ 
+  <script>
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get the download button
+      const downloadBtn = document.getElementById('downloadPdfBtn');
+      
+      // Add click event listener
+      downloadBtn.addEventListener('click', function() {
+        // Get the element to convert to PDF
+        const element = document.getElementById('resume-content');
+        
+        // Temporarily hide the download button
+        downloadBtn.style.display = 'none';
+        
+        // PDF options
+        const options = {
+          margin: 10,
+          filename: '<%=name.replace(/ /g, "_")%>_Resume.pdf',
+          image: { 
+            type: 'jpeg', 
+            quality: 0.98 
+          },
+          html2canvas: { 
+            scale: 2,
+            useCORS: true,
+            logging: true,
+            dpi: 192,
+            letterRendering: true
+          },
+          jsPDF: { 
+            unit: 'mm', 
+            format: 'a4', 
+            orientation: 'portrait' 
+          }
+        };
+
+        // Generate PDF
+        html2pdf()
+          .set(options)
+          .from(element)
+          .save()
+          .then(() => {
+            // Show the button again after PDF generation
+            downloadBtn.style.display = 'block';
+          })
+          .catch(err => {
+            console.error('Error generating PDF:', err);
+            downloadBtn.style.display = 'block';
+          });
+      });
+    });
+  </script>
+</body>
+</html>
